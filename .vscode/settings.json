@@ -1,0 +1,40 @@
+{
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "googletest.failed",
+                "settings": {
+                    "foreground": "#f00"
+                }
+            },
+            {
+                "scope": "googletest.passed",
+                "settings": {
+                    "foreground": "#0f0"
+                }
+            },
+            {
+                "scope": "googletest.run",
+                "settings": {
+                    "foreground": "#0f0"
+                }
+            }
+        ]
+    },
+    "files.associations": {
+        "ostream": "cpp",
+        "sstream": "cpp"
+    },
+    "code-runner.executorMap": {
+        "c": "cd $dir && cd ../build && gcc ../2a/*.cpp -o out -lpthread -lgtest -lgtest_main -lgmock -lgmock_main && ./out",
+        "cpp": "cd $dir && cd .. && mbed compile -t GCC_ARM -m NUCLEO_F446RE --source uart --source mbed-os --build BUILD/uart && cp BUILD/uart/uart.bin /media/syslabs/NODE_F446RE/"
+    },
+    "code-runner.customCommand": "echo Code Runner is executing custom command! && cd $workspaceRoot/build && make",
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.saveAllFilesBeforeRun": true,
+    "code-runner.showExecutionMessage": true,
+    "gtest-adapter.debugConfig": [
+        "Run Tests"
+    ],
+    "gtest-adapter.supportLocation": true
+}

@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/../mbed-os",
+                "${workspaceFolder}/../mbed-os/cmsis/TARGET_CORTEX_M",
+                "${workspaceFolder}/../mbed-os/targets/TARGET_STM",
+                "${workspaceFolder}/../mbed-os/targets/TARGET_STM/TARGET_STM32F4",
+                "${workspaceFolder}/../mbed-os/targets/TARGET_STM/TARGET_STM32F4/device",
+                "${workspaceFolder}/../mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F446xE",
+                "${workspaceFolder}/../mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F446xE/device",
+                "${workspaceFolder}/../mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F446xE/TARGET_NUCLEO_F446RE"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "configurationProvider": "vector-of-bool.cmake-tools"
+        }
+    ],
+    "version": 4
+}
