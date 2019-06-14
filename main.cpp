@@ -1,32 +1,26 @@
-//#include "mbed.h"
-
 // PA5
 // AHB1
 // RCC->RCC_AHB1ENR
 // GPIOx_MODER
 // GPIOx_ODR
 
-#include "stm32f4xx.h"
 //#include "mbed.h"
+#include "stm32f4xx.h"
+#include "led.h"
+#include "button.h"
 
 void delayMs(int delay);
 
 int main(void)
 {
-	RCC->AHB1ENR |= 1;		// enable GPIOA clock
-	RCC->AHB1ENR |= 4;		// enable GPIOC clock, which has PC13 pin with button
-
-	GPIOA->MODER |= 0x400;	// Write 1 to make PA5 output, PC13 stays input
-
-	const int led = 1 << 5;
-    volatile int button;
+	LED led;
+	BTTN button;
 
 	while(1){
-        button = GPIOC->IDR & (1 << 13);
-        if (!button) 
-            GPIOA->BSRR = led;
+        if (button.isPressed()) 
+			led.turnOn();
         else
-            GPIOA->BSRR = led << 16;
+			led.turnOff();
 
 		delayMs(10);
 	}
