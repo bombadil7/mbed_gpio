@@ -14,21 +14,21 @@ void delayMs(int delay);
 int main(void)
 {
 	RCC->AHB1ENR |= 1;		// enable GPIOA clock
+	RCC->AHB1ENR |= 4;		// enable GPIOC clock, which has PC13 pin with button
 
-	GPIOA->MODER |= 0x400;	// Write 1 to make PA5 output
+	GPIOA->MODER |= 0x400;	// Write 1 to make PA5 output, PC13 stays input
 
 	const int led = 1 << 5;
+    volatile int button;
 
 	while(1){
-		GPIOA->BSRR = led;      // Bit Set / Reset Register method
-		//GPIOA->ODR |= 0x20;	// Output Data Register method 
-		printf("Set led high\n");
-		delayMs(10);
+        button = GPIOC->IDR & (1 << 13);
+        if (!button) 
+            GPIOA->BSRR = led;
+        else
+            GPIOA->BSRR = led << 16;
 
-		GPIOA->BSRR = led << 16; // Upper 16 bits of BSRR are reset, lower 16 are set
-		//GPIOA->ODR &= ~0x20;
-		printf("Clear led\n");
-		delayMs(50);
+		delayMs(10);
 	}
 
 	return 0;
